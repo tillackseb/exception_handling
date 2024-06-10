@@ -1,0 +1,29 @@
+name = "errors-warnings"
+version = "0.1.0"
+license = "license"
+author = "Sebastian Tillack"
+maintainer = "tillacks@physik.hu-berlin.de"
+copyright = "Copyright 2024, Sebastian Tillack"
+
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+module-naming = false
+
+[library]
+source-dir = "src"
+
+[install]
+library = false
+
+[fortran]
+implicit-typing = false
+implicit-external = false
+source-form = "free"
+
+[[executable]]
+name="exception"
+source-dir="app"
+main="main.f90"
+
