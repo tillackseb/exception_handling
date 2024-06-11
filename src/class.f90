@@ -6,8 +6,7 @@
 !
 !> TODO add description
 module exception_handling_exception_class
-  use, intrinsic :: iso_fortran_env, only : output_unit, error_unit
-  use exception_handling_constants
+  use exception_handling_configuration
   implicit none
   private
 

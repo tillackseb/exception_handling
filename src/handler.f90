@@ -7,7 +7,7 @@
 !> TODO add description
 module exception_handling_exception_handler
   use, intrinsic :: iso_fortran_env, only : output_unit, error_unit
-  use exception_handling_constants
+  use exception_handling_configuration
   use exception_handling_exception_class, only : ExceptionClass, ERROR_CLASS, WARNING_CLASS
   use exception_handling_exception, only : Exception
   use exception_handling_trace, only : ProcedureTrace
@@ -81,7 +81,7 @@ contains
     !> default: -1 (no thread information)
     integer, optional, intent(in) :: thread
     !> index of rank in (distributed memory) parallel environment   
-    !> default: -1 (no rank informatio)
+    !> default: -1 (no rank information)
     integer, optional, intent(in) :: rank
     !> maximum column width of output   
     !> default: -1 (no maximum width)
@@ -89,7 +89,9 @@ contains
     !> maximum number of lines in trace output  
     !> default: -1 (full trace)
     integer, optional, intent(in) :: max_trace_lines
-    !> initialize with default report units [[DEFAULT_ERROR_UNIT]] and [[DEFAULT_WARNING_UNIT]]   
+    !> initialize with default report units
+    !> [[exception_handling_configuration(module):DEFAULT_ERROR_UNIT]] and 
+    !> [[exception_handling_configuration(module):DEFAULT_WARNING_UNIT]]   
     !> default: True
     logical, optional, intent(in) :: default_units
     !> exception handler
@@ -129,10 +131,10 @@ contains
     !> exception class
     type(ExceptionClass), intent(in) :: class
     !> optional custom exception code   
-    !> default: [[EXCEPTION_DEFAULT_CODE]]
+    !> default: [[exception_handling_configuration(module):EXCEPTION_DEFAULT_CODE]]
     integer, optional, intent(in) :: code
     !> custom message   
-    !> default: [[EXCEPTION_DEFAULT_MESSAGE]]
+    !> default: [[exception_handling_configuration(module):EXCEPTION_DEFAULT_MESSAGE]]
     character(len=*), optional, intent(in) :: message
     !> optional additional information   
     !> default: none
@@ -379,7 +381,7 @@ contains
     !> description
     type(Exception), allocatable, intent(inout) :: stack(:)
     !> number of entries to append   
-    !> default: [[HANDLER_NUM_APPEND]]
+    !> default: [[exception_handling_configuration(module):HANDLER_NUM_APPEND]]
     integer, optional, intent(in) :: n
   
     character(len=*), parameter :: PROCEDURE_NAME = 'append_entries'

@@ -1,10 +1,10 @@
 !> TODO add description
-module exception_handling_constants
+module exception_handling_configuration
   use, intrinsic :: iso_fortran_env, only : output_unit, error_unit
   implicit none
   private
 
-  character(*), parameter :: MODULE_NAME = 'exception_handling_constants'
+  character(*), parameter :: MODULE_NAME = 'exception_handling_configuration'
 
   ! general
   integer, public, parameter :: DEFAULT_ERROR_UNIT = error_unit ! default unit for error roport
@@ -47,4 +47,4 @@ module exception_handling_constants
 
 contains
 
-end module exception_handling_constants
+end module exception_handling_configuration

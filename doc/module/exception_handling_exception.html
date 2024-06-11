@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="A library for exception handling in Fortran.">
+    <meta name="author" content="Sebastian Tillack" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>exception_handling_exception &ndash; exception-handling</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+         <script src="../js/jquery-2.1.3.min.js"></script>
+         <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">exception-handling </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+                 data-toggle="dropdown" role="button"
+                 aria-haspopup="true"
+                 aria-expanded="false">
+                 Contents <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                    <li><a href="../lists/files.html">Source Files</a></li>
+                  <li><a href="../lists/modules.html">Modules</a></li>
+                  <li><a href="../lists/procedures.html">Procedures</a></li>
+                  <li><a href="../lists/types.html">Derived Types</a></li>
+                  <li><a href="../program/check.html">Program</a></li>
+              </ul>
+            </li>
+                <li class="visible-xs hidden-sm visible-lg">
+                  <a href="../lists/files.html">Source Files</a>
+                </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/modules.html">Modules</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/procedures.html">Procedures</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/types.html">Derived Types</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../program/check.html">Program</a>
+              </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+  <div class="row">
+    <h1>exception_handling_exception
+      <small>Module</small>
+      
+    </h1>
+      <div class="row" id="info-bar">
+    <div class="col-lg-12">
+      <div class="well well-sm">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li id="meta-author"><i class="fa fa-pencil"></i> Sebastian Tillack</li>
+            <li id="meta-date"><i class="fa fa-calendar-o"></i> June 2024</li>
+            <li id="meta-license"><i class="fa fa-legal"></i> GPLv3</li>
+            <li id="meta-version"><i class="fa fa-barcode"></i> v0.1</li>
+
+          <li id="statements"><i class="fa fa-list-ol"></i>
+            <a data-toggle="tooltip"
+               data-placement="bottom" data-html="true"
+               title="17.0% of total for modules and submodules.">136 statements</a>
+          </li>
+
+            <li id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/exception.f90"> Source File</a>
+            </li>
+        </ul>
+        <ol class="breadcrumb in-well text-right">
+              <li><a href='../sourcefile/exception.f90.html'>exception.f90</a></li>
+          <li class="active">exception_handling_exception</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#vars-0">Variables</a>
+        </h3>
+      </div>
+      <div id="vars-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/exception_handling_exception.html#variable-module_name~3">MODULE_NAME</a>
+            <a class="list-group-item" href="../module/exception_handling_exception.html#variable-default_module">DEFAULT_MODULE</a>
+            <a class="list-group-item" href="../module/exception_handling_exception.html#variable-default_procedure">DEFAULT_PROCEDURE</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#inters-0">Interfaces</a>
+        </h3>
+      </div>
+      <div id="inters-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/exception_handling_exception.html#interface-exception">Exception</a>
+        </div>
+      </div>
+    </div>
+
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#types-0">Derived Types</a>
+        </h3>
+      </div>
+      <div id="types-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/exception_handling_exception.html#type-exception">Exception</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#funcs-0">Functions</a>
+        </h3>
+      </div>
+      <div id="funcs-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/exception_handling_exception.html#proc-new_exception">new_exception</a>
+            <a class="list-group-item" href="../module/exception_handling_exception.html#proc-trace_string">trace_string</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#subs-0">Subroutines</a>
+        </h3>
+      </div>
+      <div id="subs-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/exception_handling_exception.html#proc-throw~2">throw</a>
+            <a class="list-group-item" href="../module/exception_handling_exception.html#proc-catch~2">catch</a>
+            <a class="list-group-item" href="../module/exception_handling_exception.html#proc-report">report</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      <p>TODO add description</p>
+<br>          <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+          <li class="list-group-item">
+            <ul class="list-inline">
+                <li><a href='../module/exception_handling_exception_class.html'>exception_handling_exception_class</a></li>
+                <li><a href='../module/exception_handling_configuration.html'>exception_handling_configuration</a></li>
+                <li><a href='../module/exception_handling_trace.html'>exception_handling_trace</a></li>
+            </ul>
+          </li>
+      </ul>
+    </div>
+
+      
+      <br>
+
+      <section class="visible-xs visible-sm hidden-md">
+          <h3>Contents</h3>
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#vars-1">Variables</a>
+        </h3>
+      </div>
+      <div id="vars-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/exception_handling_exception.html#variable-module_name~3">MODULE_NAME</a>
+            <a class="list-group-item" href="../module/exception_handling_exception.html#variable-default_module">DEFAULT_MODULE</a>
+            <a class="list-group-item" href="../module/exception_handling_exception.html#variable-default_procedure">DEFAULT_PROCEDURE</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#inters-1">Interfaces</a>
+        </h3>
+      </div>
+      <div id="inters-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/exception_handling_exception.html#interface-exception">Exception</a>
+        </div>
+      </div>
+    </div>
+
+  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#types-1">Derived Types</a>
+        </h3>
+      </div>
+      <div id="types-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/exception_handling_exception.html#type-exception">Exception</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#funcs-1">Functions</a>
+        </h3>
+      </div>
+      <div id="funcs-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/exception_handling_exception.html#proc-new_exception">new_exception</a>
+            <a class="list-group-item" href="../module/exception_handling_exception.html#proc-trace_string">trace_string</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#subs-1">Subroutines</a>
+        </h3>
+      </div>
+      <div id="subs-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/exception_handling_exception.html#proc-throw~2">throw</a>
+            <a class="list-group-item" href="../module/exception_handling_exception.html#proc-catch~2">catch</a>
+            <a class="list-group-item" href="../module/exception_handling_exception.html#proc-report">report</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+
+
+      </section>
+      <br class="visible-xs visible-sm hidden-md">
+
+
+        <section>
+          <h2>Variables</h2>
+            <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Visibility</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+<th></th><th>Initial</th>        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-module_name~3"></span>
+              character(len=*),
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>MODULE_NAME</strong></td>
+<td> =</td>
+                <td>'exception_handling_exception'</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-default_module"></span>
+              character(len=*),
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>DEFAULT_MODULE</strong></td>
+<td> =</td>
+                <td>'unknown_module'</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-default_procedure"></span>
+              character(len=*),
+            </td>
+              <td>private,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>DEFAULT_PROCEDURE</strong></td>
+<td> =</td>
+                <td>'unknown_procedure'</td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+        </section>
+        <br>
+
+
+        <section>
+          <h2>Interfaces</h2>
+              <div class="panel panel-default">
+    <div class="panel-heading codesum">
+      <span class="anchor" id="interface-exception"></span>
+      <h3>public        interface <a href='../interface/exception.html'>Exception</a> 
+      </h3>
+    </div>
+      <div class="panel-body">
+        <p>Constructor</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private pure function <a href='../proc/new_exception.html'>new_exception</a>(class, code, message, config) result(self)  
+
+    </h3>
+    
+  <p>Exception constructor.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>class</strong></td>
+            <td>
+<p>exception class  </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>code</strong></td>
+            <td>
+<p>custom integer code<br>
+default: <a href="../module/exception_handling_configuration.html#variable-exception_default_code">EXCEPTION_DEFAULT_CODE</a></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>message</strong></td>
+            <td>
+<p>exception message<br>
+default: <a href="../module/exception_handling_configuration.html#variable-exception_default_message">EXCEPTION_DEFAULT_MESSAGE</a></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/exceptionoutputconfiguration.html'>ExceptionOutputConfiguration</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>config</strong></td>
+            <td>
+<p>output configuration</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/exception.html'>Exception</a>)</small>
+    </h4>
+    <p>exception</p>
+
+          </li>
+    </ul>
+  </div>
+
+        </section>
+        <br>
+
+
+        <section>
+          <h2>Derived Types</h2>
+              <div class="panel panel-default">
+    <div class="panel-heading codesum">
+      <span class="anchor" id="type-exception"></span>
+      <h3>
+        type, public&nbsp;::&nbsp;
+        <a href='../type/exception.html'>Exception</a>
+        
+      </h3>
+    </div>
+    <div class="panel-body">
+      <p>Generic exception object.</p>
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Visibility</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+<th></th><th>Initial</th>        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-class~6"></span>
+              type(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>class</strong></td>
+<td> =</td>
+                <td>ERROR_CLASS</td>
+            <td>
+<p>exception class code</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-code~3"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>code</strong></td>
+<td> =</td>
+                <td>EXCEPTION_DEFAULT_CODE</td>
+            <td>
+<p>custom integer code</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-message~3"></span>
+              character(len=EXCEPTION_MESSAGE_MAX_LENGTH),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>message</strong></td>
+<td> =</td>
+                <td>''</td>
+            <td>
+<p>exception message</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-throw_trace"></span>
+              type(<a href='../type/proceduretrace.html'>ProcedureTrace</a>),
+            </td>
+              <td>private</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>throw_trace</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>trace leading to place exception was thrown</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-catch_trace"></span>
+              type(<a href='../type/proceduretrace.html'>ProcedureTrace</a>),
+            </td>
+              <td>private</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>catch_trace</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>trace leading to place exception was caught</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-handler_name"></span>
+              character(len=HANDLER_NAME_MAX_LENGTH),
+            </td>
+              <td>private</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>handler_name</strong></td>
+<td> =</td>
+                <td>''</td>
+            <td>
+<p>name of originating exception handler</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-config~3"></span>
+              type(<a href='../type/exceptionoutputconfiguration.html'>ExceptionOutputConfiguration</a>),
+            </td>
+              <td>private</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>config</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>output configuration</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+        <h4>Constructor</h4>
+          <p>Constructor</p>
+        <table class="table table-striped varlist">
+          <tbody>
+                <tr>
+                  <td>
+                        private
+
+                    pure
+                    function
+                    <strong><a href='../proc/new_exception.html'>new_exception</a></strong>
+                    (class, code, message, config)
+                  </td>
+                  <td><p>Exception constructor.</p></td>
+                </tr>
+          </tbody>
+        </table>
+
+
+        <h4>Type-Bound Procedures</h4>
+        <table class="table table-striped varlist">
+          <tbody>
+              <tr>
+                <td>
+                    procedure
+                    ,                  public
+,                   :: <strong><a href='../type/exception.html#boundprocedure-throw~3'>throw</a></strong>
+<small>Subroutine</small>                </td>
+                <td><p>tell where exception is thrown</p></td>
+              </tr>
+              <tr>
+                <td>
+                    procedure
+                    ,                  public
+,                   :: <strong><a href='../type/exception.html#boundprocedure-catch~3'>catch</a></strong>
+<small>Subroutine</small>                </td>
+                <td><p>tell where exception is caught</p></td>
+              </tr>
+              <tr>
+                <td>
+                    procedure
+                    ,                  public
+,                   :: <strong><a href='../type/exception.html#boundprocedure-report'>report</a></strong>
+<small>Subroutine</small>                </td>
+                <td><p>write exception to all report units</p></td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+        <section>
+          <h2>Functions</h2>
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-new_exception"></span><h3>private pure function <a href='../proc/new_exception.html'>new_exception</a>(class, code, message, config) result(self)  
+</h3></div>
+    <div class="panel-body">
+          
+  <p>Exception constructor.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>class</strong></td>
+            <td>
+<p>exception class  </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>code</strong></td>
+            <td>
+<p>custom integer code<br>
+default: <a href="../module/exception_handling_configuration.html#variable-exception_default_code">EXCEPTION_DEFAULT_CODE</a></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>message</strong></td>
+            <td>
+<p>exception message<br>
+default: <a href="../module/exception_handling_configuration.html#variable-exception_default_message">EXCEPTION_DEFAULT_MESSAGE</a></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/exceptionoutputconfiguration.html'>ExceptionOutputConfiguration</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>config</strong></td>
+            <td>
+<p>output configuration</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/exception.html'>Exception</a>)</small>
+    </h4>
+    <p>exception</p>
+
+    </div>
+  </div>
+
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-trace_string"></span><h3>private pure function <a href='../proc/trace_string.html'>trace_string</a>(throw, catch, max_num_lines) result(string)  
+</h3></div>
+    <div class="panel-body">
+          
+  <p>Create output string from catch and throw trace.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/proceduretrace.html'>ProcedureTrace</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>throw</strong></td>
+            <td>
+<p>trace leading to place exception was thrown</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/proceduretrace.html'>ProcedureTrace</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>catch</strong></td>
+            <td>
+<p>trace leading to place exception was caught</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>max_num_lines</strong></td>
+            <td>
+<p>maximum number of lines</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>character(len=:), allocatable</small>
+    </h4>
+    <p>output string</p>
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-throw~2"></span><h3>private pure subroutine <a href='../proc/throw~2.html'>throw</a>(self, handler, trace)  
+</h3></div>
+    <div class="panel-body">
+          
+  <p>Tell where exception is thrown.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/exception.html'>Exception</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+<p>exception</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>handler</strong></td>
+            <td>
+<p>name of exception handler that threw this exception</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/proceduretrace.html'>ProcedureTrace</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>trace</strong></td>
+            <td>
+<p>trace leading to place where exception is thrown<br>
+default: unknown trace</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-catch~2"></span><h3>private pure subroutine <a href='../proc/catch~2.html'>catch</a>(self, handler, trace)  
+</h3></div>
+    <div class="panel-body">
+          
+  <p>Tell where exception is caught.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/exception.html'>Exception</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+<p>exception</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>handler</strong></td>
+            <td>
+<p>name of exception handler that threw this exception</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/proceduretrace.html'>ProcedureTrace</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>trace</strong></td>
+            <td>
+<p>trace leading to place where exception is caught<br>
+default: unknown trace</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-report"></span><h3>private  subroutine <a href='../proc/report.html'>report</a>(self, max_num_trace_levels)  
+</h3></div>
+    <div class="panel-body">
+          
+  <p>Write exception to all report units.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/exception.html'>Exception</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+<p>exception</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>max_num_trace_levels</strong></td>
+            <td>
+<p>maximum number of levels in trace to report <br>
+default: <code>0</code> (full trace)</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6 col-md-6"><p>exception-handling was developed by Sebastian Tillack<br>&copy; 2024 
+</p>
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <p class="text-right">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+         ================================================== -->
+         <!-- Placed at the end of the document so the pages load faster -->
+    <!--
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        -->
+        <script src="../js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+        <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  </body>
+</html>
