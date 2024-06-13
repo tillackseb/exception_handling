@@ -8,7 +8,7 @@
     <meta name="author" content="Sebastian Tillack" >
     <link rel="icon" href="../favicon.png">
 
-    <title>any_subroutine &ndash; exception-handling</title>
+    <title>configure_output &ndash; exception-handling</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -79,7 +79,7 @@
 
     <div class="container">
   <div class="row">
-    <h1>any_subroutine
+    <h1>configure_output
       <small>Subroutine</small>
       
     </h1>
@@ -91,18 +91,18 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 1.7% of total for procedures.">11 statements</a>
+               title=" 1.3% of total for procedures.">8 statements</a>
           </li>
 
             <li id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/example.f90"> Source File</a>
+              <a href="../src/class.f90"> Source File</a>
             </li>
         </ul>
         <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/example.f90.html'>example.f90</a></li>
-              <li><a href='../module/example.html'>example</a></li>
-          <li class="active">any_subroutine</li>
+              <li><a href='../sourcefile/class.f90.html'>class.f90</a></li>
+              <li><a href='../module/exception_handling_exception_class.html'>exception_handling_exception_class</a></li>
+          <li class="active">configure_output</li>
         </ol>
       </div>
     </div>
@@ -145,12 +145,14 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private pure subroutine any_subroutine(eh)  
+    <h2>private pure subroutine configure_output(self, max_width, max_trace_lines)  
 </h2>
     
 
-    <p>description</p>
+    <p>Configure output format.</p>
 
+    <h3>Type Bound</h3>
+    <p><a href='../type/exceptionclass.html'>ExceptionClass</a></p>
 
     <h3>Arguments</h3>
         <table class="table table-striped varlist">
@@ -165,17 +167,47 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-eh~3"></span>
-              type(<a href='../type/exceptionhandler.html'>ExceptionHandler</a>),
+              <span class="anchor" id="variable-self~26"></span>
+              class(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
             </td>
-<td>intent(inout),</td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+                <p>exception class</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-max_width~4"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
               <td>optional</td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>eh</strong></td>
+            <td><strong>max_width</strong></td>
             <td>
-                <p>exception handler</p>
+                <p>see <a href="../module/exception_handling_configuration.html#type-exceptionoutputconfiguration">ExceptionOutputConfiguration</a></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-max_trace_lines~4"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>max_trace_lines</strong></td>
+            <td>
+                <p>see <a href="../module/exception_handling_configuration.html#type-exceptionoutputconfiguration">ExceptionOutputConfiguration</a></p>
             </td>
         </tr>
     </tbody>

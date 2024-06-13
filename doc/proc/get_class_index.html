@@ -8,7 +8,7 @@
     <meta name="author" content="Sebastian Tillack" >
     <link rel="icon" href="../favicon.png">
 
-    <title>example_omp &ndash; exception-handling</title>
+    <title>get_class_index &ndash; exception-handling</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -79,8 +79,8 @@
 
     <div class="container">
   <div class="row">
-    <h1>example_omp
-      <small>Subroutine</small>
+    <h1>get_class_index
+      <small>Function</small>
       
     </h1>
       <div class="row" id="info-bar">
@@ -91,18 +91,18 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 3.5% of total for procedures.">22 statements</a>
+               title=" 1.4% of total for procedures.">9 statements</a>
           </li>
 
             <li id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/example.f90"> Source File</a>
+              <a href="../src/handler.f90"> Source File</a>
             </li>
         </ul>
         <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/example.f90.html'>example.f90</a></li>
-              <li><a href='../module/example.html'>example</a></li>
-          <li class="active">example_omp</li>
+              <li><a href='../sourcefile/handler.f90.html'>handler.f90</a></li>
+              <li><a href='../module/exception_handling_exception_handler.html'>exception_handling_exception_handler</a></li>
+          <li class="active">get_class_index</li>
         </ol>
       </div>
     </div>
@@ -139,35 +139,70 @@
   
   
 
-    <em>None</em>
 
   </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>public  subroutine example_omp()  
+    <h2>private pure function get_class_index(eh, class) result(idx)  
 </h2>
-        <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Uses</h3>
-      </div>
-      <ul class="list-group">
-          <li class="list-group-item">
-            <ul class="list-inline">
-                <li><a href='<a href="https://www.openmp.org/spec-html/5.1/openmpch3.html#x156-1890003">omp_lib</a>'>omp_lib</a></li>
-            </ul>
-          </li>
-      </ul>
-    </div>
+    
 
-
-    <p>Example for recommended usage of exception handling in OMP threaded environment.</p>
+    <p>Get index of class in exception handler's class list.</p>
 
 
     <h3>Arguments</h3>
-    <em>None</em>
-    <br>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-eh"></span>
+              type(<a href='../type/exceptionhandler.html'>ExceptionHandler</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>eh</strong></td>
+            <td>
+                <p>exception handler</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-class~2"></span>
+              type(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>class</strong></td>
+            <td>
+                <p>exception class</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-idx"></span>
+          integer
+        </small>
+      </h3>
+      <p>class index</p>
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
@@ -192,7 +227,6 @@
   
   
 
-    <em>None</em>
 
     </section>
     <br class="visible-xs visible-sm hidden-md">

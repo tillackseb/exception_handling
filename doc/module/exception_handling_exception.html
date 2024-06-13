@@ -95,7 +95,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="17.0% of total for modules and submodules.">136 statements</a>
+               title="17.6% of total for modules and submodules.">138 statements</a>
           </li>
 
             <li id="source-file">
@@ -132,8 +132,7 @@
       <div id="vars-0" class="panel-collapse collapse">
         <div class="list-group">
             <a class="list-group-item" href="../module/exception_handling_exception.html#variable-module_name~3">MODULE_NAME</a>
-            <a class="list-group-item" href="../module/exception_handling_exception.html#variable-default_module">DEFAULT_MODULE</a>
-            <a class="list-group-item" href="../module/exception_handling_exception.html#variable-default_procedure">DEFAULT_PROCEDURE</a>
+            <a class="list-group-item" href="../module/exception_handling_exception.html#variable-no_exception">NO_EXCEPTION</a>
         </div>
       </div>
     </div>
@@ -222,8 +221,8 @@
           <li class="list-group-item">
             <ul class="list-inline">
                 <li><a href='../module/exception_handling_exception_class.html'>exception_handling_exception_class</a></li>
-                <li><a href='../module/exception_handling_configuration.html'>exception_handling_configuration</a></li>
                 <li><a href='../module/exception_handling_trace.html'>exception_handling_trace</a></li>
+                <li><a href='../module/exception_handling_configuration.html'>exception_handling_configuration</a></li>
             </ul>
           </li>
       </ul>
@@ -244,8 +243,7 @@
       <div id="vars-1" class="panel-collapse collapse">
         <div class="list-group">
             <a class="list-group-item" href="../module/exception_handling_exception.html#variable-module_name~3">MODULE_NAME</a>
-            <a class="list-group-item" href="../module/exception_handling_exception.html#variable-default_module">DEFAULT_MODULE</a>
-            <a class="list-group-item" href="../module/exception_handling_exception.html#variable-default_procedure">DEFAULT_PROCEDURE</a>
+            <a class="list-group-item" href="../module/exception_handling_exception.html#variable-no_exception">NO_EXCEPTION</a>
         </div>
       </div>
     </div>
@@ -355,36 +353,19 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-default_module"></span>
-              character(len=*),
+              <span class="anchor" id="variable-no_exception"></span>
+              type(<a href='../type/exception.html'>Exception</a>),
             </td>
-              <td>private,</td>
+              <td>public,</td>
             <td>
 parameter               
             </td>
             <td>::</td>
-            <td><strong>DEFAULT_MODULE</strong></td>
+            <td><strong>NO_EXCEPTION</strong></td>
 <td> =</td>
-                <td>'unknown_module'</td>
+                <td>Exception(NO_EXCEPTION_CLASS, code=0, message='', throw_trace=EMPTY_TRACE, catch_trace=EMPTY_TRACE)</td>
             <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-default_procedure"></span>
-              character(len=*),
-            </td>
-              <td>private,</td>
-            <td>
-parameter               
-            </td>
-            <td>::</td>
-            <td><strong>DEFAULT_PROCEDURE</strong></td>
-<td> =</td>
-                <td>'unknown_procedure'</td>
-            <td>
-                
+                <p>no exception</p>
             </td>
         </tr>
     </tbody>
@@ -531,7 +512,7 @@ default: <a href="../module/exception_handling_configuration.html#variable-excep
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-class~6"></span>
+              <span class="anchor" id="variable-class~13"></span>
               type(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
             </td>
               <td>public</td>
@@ -591,8 +572,8 @@ default: <a href="../module/exception_handling_configuration.html#variable-excep
             </td>
             <td>::</td>
             <td><strong>throw_trace</strong></td>
-                <td></td>
-                <td></td>
+<td> =</td>
+                <td>EMPTY_TRACE</td>
             <td>
 <p>trace leading to place exception was thrown</p>
             </td>
@@ -608,8 +589,8 @@ default: <a href="../module/exception_handling_configuration.html#variable-excep
             </td>
             <td>::</td>
             <td><strong>catch_trace</strong></td>
-                <td></td>
-                <td></td>
+<td> =</td>
+                <td>EMPTY_TRACE</td>
             <td>
 <p>trace leading to place exception was caught</p>
             </td>
@@ -629,23 +610,6 @@ default: <a href="../module/exception_handling_configuration.html#variable-excep
                 <td>''</td>
             <td>
 <p>name of originating exception handler</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-config~3"></span>
-              type(<a href='../type/exceptionoutputconfiguration.html'>ExceptionOutputConfiguration</a>),
-            </td>
-              <td>private</td>
-            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>config</strong></td>
-                <td></td>
-                <td></td>
-            <td>
-<p>output configuration</p>
             </td>
         </tr>
     </tbody>
@@ -1023,7 +987,7 @@ default: unknown trace</p>
   </div>
 
               <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-report"></span><h3>private  subroutine <a href='../proc/report.html'>report</a>(self, max_num_trace_levels)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-report"></span><h3>private  subroutine <a href='../proc/report.html'>report</a>(self)  
 </h3></div>
     <div class="panel-body">
           
@@ -1053,22 +1017,6 @@ default: unknown trace</p>
             <td><strong>self</strong></td>
             <td>
 <p>exception</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer,
-            </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>max_num_trace_levels</strong></td>
-            <td>
-<p>maximum number of levels in trace to report <br>
-default: <code>0</code> (full trace)</p>
             </td>
         </tr>
     </tbody>

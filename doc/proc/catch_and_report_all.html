@@ -8,7 +8,7 @@
     <meta name="author" content="Sebastian Tillack" >
     <link rel="icon" href="../favicon.png">
 
-    <title>recursive_subroutine &ndash; exception-handling</title>
+    <title>catch_and_report_all &ndash; exception-handling</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -79,7 +79,7 @@
 
     <div class="container">
   <div class="row">
-    <h1>recursive_subroutine
+    <h1>catch_and_report_all
       <small>Subroutine</small>
       
     </h1>
@@ -91,18 +91,18 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 4.1% of total for procedures.">26 statements</a>
+               title=" 2.1% of total for procedures.">13 statements</a>
           </li>
 
             <li id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/example.f90"> Source File</a>
+              <a href="../src/handler.f90"> Source File</a>
             </li>
         </ul>
         <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/example.f90.html'>example.f90</a></li>
-              <li><a href='../module/example.html'>example</a></li>
-          <li class="active">recursive_subroutine</li>
+              <li><a href='../sourcefile/handler.f90.html'>handler.f90</a></li>
+              <li><a href='../module/exception_handling_exception_handler.html'>exception_handling_exception_handler</a></li>
+          <li class="active">catch_and_report_all</li>
         </ol>
       </div>
     </div>
@@ -145,12 +145,14 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private recursive subroutine recursive_subroutine(i, eh)  
+    <h2>private  subroutine catch_and_report_all(self, es, class)  
 </h2>
     
 
-    <p>Create deep and branching trace with recursion.</p>
+    <p>Catch all exceptions and remove them from stack.</p>
 
+    <h3>Type Bound</h3>
+    <p><a href='../type/exceptionhandler.html'>ExceptionHandler</a></p>
 
     <h3>Arguments</h3>
         <table class="table table-striped varlist">
@@ -165,32 +167,48 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~3"></span>
-              integer,
+              <span class="anchor" id="variable-self~8"></span>
+              class(<a href='../type/exceptionhandler.html'>ExceptionHandler</a>),
             </td>
 <td>intent(inout)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>i</strong></td>
+            <td><strong>self</strong></td>
             <td>
-                <p>some input parameter</p>
+                <p>exception handler</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-eh~4"></span>
-              type(<a href='../type/exceptionhandler.html'>ExceptionHandler</a>),
+              <span class="anchor" id="variable-es~2"></span>
+              type(<a href='../type/exception.html'>Exception</a>),
             </td>
-<td>intent(inout),</td>
+<td>intent(out),</td>
+              <td>optional,</td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>es</strong>(:)</td>
+            <td>
+                <p>cought exceptions
+(empty array if handler has no exceptions)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-class~7"></span>
+              type(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
+            </td>
+<td>intent(in),</td>
               <td>optional</td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>eh</strong></td>
+            <td><strong>class</strong></td>
             <td>
-                <p>exception handler</p>
+                <p>if present, only exceptions of this class will be caught</p>
             </td>
         </tr>
     </tbody>

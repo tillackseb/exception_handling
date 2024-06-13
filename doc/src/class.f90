@@ -19,15 +19,21 @@ module exception_handling_exception_class
     character(len=CLASS_NAME_MAX_LENGTH) :: name = CLASS_NAME_DEFAULT
     !> units to which report exceptions of this class
     integer :: report_units(CLASS_MAX_NUM_UNITS) = CLASS_INVALID_UNIT
+    !> output configuration
+    type(ExceptionOutputConfiguration) :: output_config
   contains
     !> get exception class name
     procedure :: get_name
     !> get all report units
     procedure :: get_report_units
+    !> get output configuration
+    procedure :: get_output_config
     !> add report units
     procedure :: add_report_units
     !> remove report units
     procedure :: remove_report_units
+    !> configure output format
+    procedure :: configure_output
     ! comparison
     procedure, private, pass(lhs) :: is_equal_to
     procedure, private, pass(lhs) :: is_not_equal_to
@@ -35,7 +41,15 @@ module exception_handling_exception_class
     generic :: operator(/=) => is_not_equal_to
   end type ExceptionClass
 
+  !> Constructor.
+  interface ExceptionClass
+    module procedure :: new_exception_class
+  end interface ExceptionClass
+
   ! module ExceptionClass type constants
+  !> constant exception class representing no exceptions
+  type(ExceptionClass), public, parameter :: NO_EXCEPTION_CLASS &
+    = ExceptionClass( name='NO EXCEPTION' )
   !> constant exception class for errors
   type(ExceptionClass), public, parameter :: ERROR_CLASS &
     = ExceptionClass( name='ERROR', report_units=[DEFAULT_ERROR_UNIT, spread(CLASS_INVALID_UNIT, 1, CLASS_MAX_NUM_UNITS-1)] )
@@ -43,11 +57,6 @@ module exception_handling_exception_class
   type(ExceptionClass), public, parameter :: WARNING_CLASS &
     = ExceptionClass( name='WARNING', report_units=[DEFAULT_WARNING_UNIT, spread(CLASS_INVALID_UNIT, 1, CLASS_MAX_NUM_UNITS-1)] )
   
-  !> Constructor.
-  interface ExceptionClass
-    module procedure :: new_exception_class
-  end interface ExceptionClass
-
   public :: ExceptionClass
 
 contains
@@ -98,6 +107,18 @@ contains
     end if
   end function get_report_units
 
+  !> Get output configuration.
+  pure function get_output_config( self ) result( config )
+    !> exception class
+    class(ExceptionClass), intent(in) :: self
+    !> output configuration
+    type(ExceptionOutputConfiguration) :: config
+  
+    character(len=*), parameter :: PROCEDURE_NAME = 'get_output_config'
+    
+    config = self%output_config
+  end function get_output_config
+
   !> Add report units to exception class.
   pure subroutine add_report_units( self, units )
     !> exception class
@@ -141,6 +162,21 @@ contains
       self%report_units(n) = CLASS_INVALID_UNIT 
     end do
   end subroutine remove_report_units
+
+  !> Configure output format.
+  pure subroutine configure_output( self, max_width, max_trace_lines )
+    !> exception class
+    class(ExceptionClass), intent(inout) :: self
+    !> see [[exception_handling_configuration(module):ExceptionOutputConfiguration(type)]]
+    integer, optional, intent(in) :: max_width
+    !> see [[exception_handling_configuration(module):ExceptionOutputConfiguration(type)]]
+    integer, optional, intent(in) :: max_trace_lines
+  
+    character(len=*), parameter :: PROCEDURE_NAME = 'configure_output'
+
+    if (present(max_width)) self%output_config%max_width = max_width
+    if (present(max_trace_lines)) self%output_config%max_trace_lines = max_trace_lines
+  end subroutine configure_output
 
   !> Check if two [[ExceptionClass(type)]] objects are equal.
   elemental pure function is_equal_to( lhs, rhs ) result( is_equal )

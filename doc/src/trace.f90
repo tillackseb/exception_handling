@@ -26,15 +26,24 @@ module exception_handling_trace
     module procedure :: new_procedure_trace
   end interface ProcedureTrace
 
+  ! module ProcedureTrace type constants
+  !> constant empty procedure trace
+  type(ProcedureTrace), public, parameter :: EMPTY_TRACE &
+    = ProcedureTrace( trace=repeat( TRACE_SPECIAL, TRACE_MAX_LENGTH ) )
+  !> constant unknown procedure trace
+  type(ProcedureTrace), public, parameter :: UNKNOWN_TRACE &
+    = ProcedureTrace( trace=TRACE_UNKNOWN )
+
   public :: ProcedureTrace
 
 contains
 
   !> Procedure trace constructor.
-  pure function new_procedure_trace( trace ) result( self )
+  pure function new_procedure_trace( trace, delimiter ) result( self )
     !> comma separated list of levels of trace   
-    !> default : empty string
-    character(len=*), optional, intent(in) :: trace
+    character(len=*), intent(in) :: trace
+    !> delimiter (only used to parse initialization string)   
+    character, intent(in) :: delimiter
     !> procedure trace
     type(ProcedureTrace) :: self
   
@@ -43,12 +52,15 @@ contains
     integer :: i, j, n
     character(len=TRACE_MAX_LENGTH) :: add
 
-    if (.not. present(trace)) return
+    if (trim( adjustl( trace ) ) == '') then
+      self = EMPTY_TRACE
+      return
+    end if
 
     n = len( trace )
     i = 1; j = 1
     do while (i > 0 .and. j <= n)
-      i = index( trace(j:), TRACE_DELIMITER )
+      i = index( trace(j:), delimiter )
       if (i == 0) then
         add = trim( adjustl( trace(j:n) ) )
       else if (i == 1) then
@@ -60,7 +72,7 @@ contains
       call self%add( add )
       j = j + i
     end do
-    if (trace(n:n) == TRACE_DELIMITER) call self%add( TRACE_UNKNOWN )
+    if (trace(n:n) == delimiter) call self%add( TRACE_UNKNOWN )
   end function new_procedure_trace
 
   !> Add level to trace.

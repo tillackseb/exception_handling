@@ -91,7 +91,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 3.9% of total for procedures.">25 statements</a>
+               title=" 4.6% of total for procedures.">29 statements</a>
           </li>
 
             <li id="source-file">
@@ -145,7 +145,7 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private pure function new_procedure_trace(trace) result(self)  
+    <h2>private pure function new_procedure_trace(trace, delimiter) result(self)  
 </h2>
     
 
@@ -165,18 +165,32 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-trace~8"></span>
+              <span class="anchor" id="variable-trace~4"></span>
               character(len=*),
             </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
+<td>intent(in)</td>
+              <td></td>            <td>
               
             </td>
             <td>::</td>
             <td><strong>trace</strong></td>
             <td>
-                <p>comma separated list of levels of trace <br>
-default : empty string</p>
+                <p>comma separated list of levels of trace   </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-delimiter"></span>
+              character(len=1),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>delimiter</strong></td>
+            <td>
+                <p>delimiter (only used to parse initialization string)   </p>
             </td>
         </tr>
     </tbody>
@@ -184,7 +198,7 @@ default : empty string</p>
 
       <h3>Return Value
         <small>
-          <span class="anchor" id="variable-self~21"></span>
+          <span class="anchor" id="variable-self~27"></span>
           type(<a href='../type/proceduretrace.html'>ProcedureTrace</a>)
         </small>
       </h3>

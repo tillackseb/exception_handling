@@ -91,7 +91,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="<p>23.0% of total for derived types.</p>Including implementation: 83 statements, 22.7% of total for derived types.">14 statements</a>
+               title="<p>25.0% of total for derived types.</p>Including implementation: 100 statements, 21.3% of total for derived types.">17 statements</a>
           </li>
 
             <li id="source-file">
@@ -130,6 +130,7 @@
         <div class="list-group">
             <a class="list-group-item" href="../type/exceptionclass.html#variable-name~4">name</a>
             <a class="list-group-item" href="../type/exceptionclass.html#variable-report_units~2">report_units</a>
+            <a class="list-group-item" href="../type/exceptionclass.html#variable-output_config~2">output_config</a>
         </div>
       </div>
     </div>
@@ -171,8 +172,10 @@
         <div class="list-group">
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-get_name">get_name</a>
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-get_report_units">get_report_units</a>
+            <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-get_output_config">get_output_config</a>
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-add_report_units~2">add_report_units</a>
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-remove_report_units~2">remove_report_units</a>
+            <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-configure_output~2">configure_output</a>
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-is_equal_to">is_equal_to</a>
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-is_not_equal_to">is_not_equal_to</a>
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-operator%28%3D%3D%29">operator(==)</a>
@@ -206,6 +209,7 @@
         <div class="list-group">
             <a class="list-group-item" href="../type/exceptionclass.html#variable-name~4">name</a>
             <a class="list-group-item" href="../type/exceptionclass.html#variable-report_units~2">report_units</a>
+            <a class="list-group-item" href="../type/exceptionclass.html#variable-output_config~2">output_config</a>
         </div>
       </div>
     </div>
@@ -247,8 +251,10 @@
         <div class="list-group">
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-get_name">get_name</a>
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-get_report_units">get_report_units</a>
+            <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-get_output_config">get_output_config</a>
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-add_report_units~2">add_report_units</a>
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-remove_report_units~2">remove_report_units</a>
+            <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-configure_output~2">configure_output</a>
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-is_equal_to">is_equal_to</a>
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-is_not_equal_to">is_not_equal_to</a>
             <a class="list-group-item" href="../type/exceptionclass.html#boundprocedure-operator%28%3D%3D%29">operator(==)</a>
@@ -307,6 +313,23 @@
                 <td>CLASS_INVALID_UNIT</td>
             <td>
                 <p>units to which report exceptions of this class</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-output_config~2"></span>
+              type(<a href='../type/exceptionoutputconfiguration.html'>ExceptionOutputConfiguration</a>),
+            </td>
+              <td>private</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>output_config</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                <p>output configuration</p>
             </td>
         </tr>
     </tbody>
@@ -504,6 +527,60 @@
   </div>
 
             <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-get_output_config"></span><h3>procedure, public,  :: <strong>get_output_config</strong>          
+    </h3></div>
+      <div class="panel-body">
+        
+        <p>get output configuration</p>
+      </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private pure function <a href='../proc/get_output_config.html'>get_output_config</a>(self) result(config)  
+</h3>
+    
+  <p>Get output configuration.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+<p>exception class</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/exceptionoutputconfiguration.html'>ExceptionOutputConfiguration</a>)</small>
+    </h4>
+    <p>output configuration</p>
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
     <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-add_report_units~2"></span><h3>procedure, public,  :: <strong>add_report_units</strong>          
     </h3></div>
       <div class="panel-body">
@@ -621,6 +698,85 @@
             <td><strong>units</strong>(:)</td>
             <td>
 <p>report units</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+        </li>
+    </ul>
+  </div>
+
+            <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-configure_output~2"></span><h3>procedure, public,  :: <strong>configure_output</strong>          
+    </h3></div>
+      <div class="panel-body">
+        
+        <p>configure output format</p>
+      </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+                  <h3>
+    private pure subroutine <a href='../proc/configure_output~2.html'>configure_output</a>(self, max_width, max_trace_lines)  
+</h3>
+    
+  <p>Configure output format.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+<p>exception class</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>max_width</strong></td>
+            <td>
+<p>see <a href="../module/exception_handling_configuration.html#type-exceptionoutputconfiguration">ExceptionOutputConfiguration</a></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>max_trace_lines</strong></td>
+            <td>
+<p>see <a href="../module/exception_handling_configuration.html#type-exceptionoutputconfiguration">ExceptionOutputConfiguration</a></p>
             </td>
         </tr>
     </tbody>

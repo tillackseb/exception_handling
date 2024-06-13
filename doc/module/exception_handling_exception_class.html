@@ -95,7 +95,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="11.5% of total for modules and submodules.">92 statements</a>
+               title="14.0% of total for modules and submodules.">110 statements</a>
           </li>
 
             <li id="source-file">
@@ -131,7 +131,8 @@
       </div>
       <div id="vars-0" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../module/exception_handling_exception_class.html#variable-module_name~5">MODULE_NAME</a>
+            <a class="list-group-item" href="../module/exception_handling_exception_class.html#variable-module_name~4">MODULE_NAME</a>
+            <a class="list-group-item" href="../module/exception_handling_exception_class.html#variable-no_exception_class">NO_EXCEPTION_CLASS</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#variable-error_class">ERROR_CLASS</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#variable-warning_class">WARNING_CLASS</a>
         </div>
@@ -182,6 +183,7 @@
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-new_exception_class">new_exception_class</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-get_name">get_name</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-get_report_units">get_report_units</a>
+            <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-get_output_config">get_output_config</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-is_equal_to">is_equal_to</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-is_not_equal_to">is_not_equal_to</a>
         </div>
@@ -198,6 +200,7 @@
         <div class="list-group">
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-add_report_units~2">add_report_units</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-remove_report_units~2">remove_report_units</a>
+            <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-configure_output~2">configure_output</a>
         </div>
       </div>
     </div>
@@ -243,7 +246,8 @@
       </div>
       <div id="vars-1" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../module/exception_handling_exception_class.html#variable-module_name~5">MODULE_NAME</a>
+            <a class="list-group-item" href="../module/exception_handling_exception_class.html#variable-module_name~4">MODULE_NAME</a>
+            <a class="list-group-item" href="../module/exception_handling_exception_class.html#variable-no_exception_class">NO_EXCEPTION_CLASS</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#variable-error_class">ERROR_CLASS</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#variable-warning_class">WARNING_CLASS</a>
         </div>
@@ -294,6 +298,7 @@
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-new_exception_class">new_exception_class</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-get_name">get_name</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-get_report_units">get_report_units</a>
+            <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-get_output_config">get_output_config</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-is_equal_to">is_equal_to</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-is_not_equal_to">is_not_equal_to</a>
         </div>
@@ -310,6 +315,7 @@
         <div class="list-group">
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-add_report_units~2">add_report_units</a>
             <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-remove_report_units~2">remove_report_units</a>
+            <a class="list-group-item" href="../module/exception_handling_exception_class.html#proc-configure_output~2">configure_output</a>
         </div>
       </div>
     </div>
@@ -340,7 +346,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-module_name~5"></span>
+              <span class="anchor" id="variable-module_name~4"></span>
               character(len=*),
             </td>
               <td>private,</td>
@@ -353,6 +359,23 @@ parameter
                 <td>'exception_handling_exception_class'</td>
             <td>
                 
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-no_exception_class"></span>
+              type(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>NO_EXCEPTION_CLASS</strong></td>
+<td> =</td>
+                <td>ExceptionClass(name='NO EXCEPTION')</td>
+            <td>
+                <p>constant exception class representing no exceptions</p>
             </td>
         </tr>
         <tr>
@@ -533,6 +556,23 @@ parameter
 <p>units to which report exceptions of this class</p>
             </td>
         </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-output_config~2"></span>
+              type(<a href='../type/exceptionoutputconfiguration.html'>ExceptionOutputConfiguration</a>),
+            </td>
+              <td>private</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>output_config</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>output configuration</p>
+            </td>
+        </tr>
     </tbody>
   </table>
 
@@ -579,6 +619,14 @@ parameter
                 <td>
                     procedure
                     ,                  public
+,                   :: <strong><a href='../type/exceptionclass.html#boundprocedure-get_output_config'>get_output_config</a></strong>
+<small>Function</small>                </td>
+                <td><p>get output configuration</p></td>
+              </tr>
+              <tr>
+                <td>
+                    procedure
+                    ,                  public
 ,                   :: <strong><a href='../type/exceptionclass.html#boundprocedure-add_report_units~2'>add_report_units</a></strong>
 <small>Subroutine</small>                </td>
                 <td><p>add report units</p></td>
@@ -590,6 +638,14 @@ parameter
 ,                   :: <strong><a href='../type/exceptionclass.html#boundprocedure-remove_report_units~2'>remove_report_units</a></strong>
 <small>Subroutine</small>                </td>
                 <td><p>remove report units</p></td>
+              </tr>
+              <tr>
+                <td>
+                    procedure
+                    ,                  public
+,                   :: <strong><a href='../type/exceptionclass.html#boundprocedure-configure_output~2'>configure_output</a></strong>
+<small>Subroutine</small>                </td>
+                <td><p>configure output format</p></td>
               </tr>
               <tr>
                 <td>
@@ -783,6 +839,51 @@ generic,
     <small>integer, allocatable, (:)</small>
     </h4>
     <p>units</p>
+
+    </div>
+  </div>
+
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-get_output_config"></span><h3>private pure function <a href='../proc/get_output_config.html'>get_output_config</a>(self) result(config)  
+</h3></div>
+    <div class="panel-body">
+          
+  <p>Get output configuration.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+<p>exception class</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/exceptionoutputconfiguration.html'>ExceptionOutputConfiguration</a>)</small>
+    </h4>
+    <p>output configuration</p>
 
     </div>
   </div>
@@ -1013,6 +1114,76 @@ generic,
             <td><strong>units</strong>(:)</td>
             <td>
 <p>report units</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-configure_output~2"></span><h3>private pure subroutine <a href='../proc/configure_output~2.html'>configure_output</a>(self, max_width, max_trace_lines)  
+</h3></div>
+    <div class="panel-body">
+          
+  <p>Configure output format.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+<p>exception class</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>max_width</strong></td>
+            <td>
+<p>see <a href="../module/exception_handling_configuration.html#type-exceptionoutputconfiguration">ExceptionOutputConfiguration</a></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>max_trace_lines</strong></td>
+            <td>
+<p>see <a href="../module/exception_handling_configuration.html#type-exceptionoutputconfiguration">ExceptionOutputConfiguration</a></p>
             </td>
         </tr>
     </tbody>

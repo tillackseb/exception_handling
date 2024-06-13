@@ -91,7 +91,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="<p>23.0% of total for derived types.</p>Including implementation: 46 statements, 12.6% of total for derived types.">14 statements</a>
+               title="<p>20.0% of total for derived types.</p>Including implementation: 46 statements,  9.8% of total for derived types.">13 statements</a>
           </li>
 
             <li id="source-file">
@@ -128,13 +128,12 @@
       </div>
       <div id="vars-0" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../type/exception.html#variable-class~6">class</a>
+            <a class="list-group-item" href="../type/exception.html#variable-class~13">class</a>
             <a class="list-group-item" href="../type/exception.html#variable-code~3">code</a>
             <a class="list-group-item" href="../type/exception.html#variable-message~3">message</a>
             <a class="list-group-item" href="../type/exception.html#variable-throw_trace">throw_trace</a>
             <a class="list-group-item" href="../type/exception.html#variable-catch_trace">catch_trace</a>
             <a class="list-group-item" href="../type/exception.html#variable-handler_name">handler_name</a>
-            <a class="list-group-item" href="../type/exception.html#variable-config~3">config</a>
         </div>
       </div>
     </div>
@@ -204,13 +203,12 @@
       </div>
       <div id="vars-1" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../type/exception.html#variable-class~6">class</a>
+            <a class="list-group-item" href="../type/exception.html#variable-class~13">class</a>
             <a class="list-group-item" href="../type/exception.html#variable-code~3">code</a>
             <a class="list-group-item" href="../type/exception.html#variable-message~3">message</a>
             <a class="list-group-item" href="../type/exception.html#variable-throw_trace">throw_trace</a>
             <a class="list-group-item" href="../type/exception.html#variable-catch_trace">catch_trace</a>
             <a class="list-group-item" href="../type/exception.html#variable-handler_name">handler_name</a>
-            <a class="list-group-item" href="../type/exception.html#variable-config~3">config</a>
         </div>
       </div>
     </div>
@@ -277,7 +275,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-class~6"></span>
+              <span class="anchor" id="variable-class~13"></span>
               type(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
             </td>
               <td>public</td>
@@ -337,8 +335,8 @@
             </td>
             <td>::</td>
             <td><strong>throw_trace</strong></td>
-                <td></td>
-                <td></td>
+<td> =</td>
+                <td>EMPTY_TRACE</td>
             <td>
                 <p>trace leading to place exception was thrown</p>
             </td>
@@ -354,8 +352,8 @@
             </td>
             <td>::</td>
             <td><strong>catch_trace</strong></td>
-                <td></td>
-                <td></td>
+<td> =</td>
+                <td>EMPTY_TRACE</td>
             <td>
                 <p>trace leading to place exception was caught</p>
             </td>
@@ -375,23 +373,6 @@
                 <td>''</td>
             <td>
                 <p>name of originating exception handler</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-config~3"></span>
-              type(<a href='../type/exceptionoutputconfiguration.html'>ExceptionOutputConfiguration</a>),
-            </td>
-              <td>private</td>
-            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>config</strong></td>
-                <td></td>
-                <td></td>
-            <td>
-                <p>output configuration</p>
             </td>
         </tr>
     </tbody>
@@ -682,7 +663,7 @@ default: unknown trace</p>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  subroutine <a href='../proc/report.html'>report</a>(self, max_num_trace_levels)  
+    private  subroutine <a href='../proc/report.html'>report</a>(self)  
 </h3>
     
   <p>Write exception to all report units.</p>
@@ -711,22 +692,6 @@ default: unknown trace</p>
             <td><strong>self</strong></td>
             <td>
 <p>exception</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer,
-            </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>max_num_trace_levels</strong></td>
-            <td>
-<p>maximum number of levels in trace to report <br>
-default: <code>0</code> (full trace)</p>
             </td>
         </tr>
     </tbody>

@@ -7,16 +7,12 @@
 !> TODO add description
 module exception_handling_exception
   use exception_handling_configuration
-  use exception_handling_exception_class, only : ExceptionClass, ERROR_CLASS
-  use exception_handling_trace, only : ProcedureTrace
+  use exception_handling_exception_class, only : ExceptionClass, ERROR_CLASS, NO_EXCEPTION_CLASS
+  use exception_handling_trace, only : ProcedureTrace, EMPTY_TRACE, UNKNOWN_TRACE
   implicit none
   private
 
   character(len=*), parameter :: MODULE_NAME = 'exception_handling_exception'
-
-  ! module defaults
-  character(len=*), parameter :: DEFAULT_MODULE = 'unknown_module'
-  character(len=*), parameter :: DEFAULT_PROCEDURE = 'unknown_procedure'
 
   !> Generic exception object.
   type :: Exception
@@ -28,13 +24,11 @@ module exception_handling_exception
     !> exception message
     character(len=EXCEPTION_MESSAGE_MAX_LENGTH), public :: message = ''
     !> trace leading to place exception was thrown
-    type(ProcedureTrace) :: throw_trace
+    type(ProcedureTrace) :: throw_trace = EMPTY_TRACE
     !> trace leading to place exception was caught
-    type(ProcedureTrace) :: catch_trace
+    type(ProcedureTrace) :: catch_trace = EMPTY_TRACE
     !> name of originating exception handler
     character(len=HANDLER_NAME_MAX_LENGTH) :: handler_name = ''
-    !> output configuration
-    type(ExceptionOutputConfiguration) :: config
   contains
     !> tell where exception is thrown
     procedure :: throw
@@ -48,6 +42,11 @@ module exception_handling_exception
   interface Exception
     module procedure :: new_exception
   end interface Exception
+
+  ! module Exception type constants
+  !> no exception
+  type(Exception), public, parameter :: NO_EXCEPTION &
+    = Exception( NO_EXCEPTION_CLASS, code=0, message='', throw_trace=EMPTY_TRACE, catch_trace=EMPTY_TRACE )
 
   public :: Exception
 
@@ -75,10 +74,9 @@ contains
     self%message = EXCEPTION_DEFAULT_MESSAGE
     if (present(message)) self%message = trim( adjustl( message ) )
     if (present(code)) self%code = code
-    if (present(config)) self%config = config
 
-    self%throw_trace = ProcedureTrace( TRACE_UNKNOWN )
-    self%catch_trace = ProcedureTrace( TRACE_UNKNOWN )
+    self%throw_trace = UNKNOWN_TRACE
+    self%catch_trace = UNKNOWN_TRACE
   end function new_exception
 
   !> Tell where exception is thrown.
@@ -114,13 +112,10 @@ contains
   end subroutine catch
 
   !> Write exception to all report units.
-  subroutine report( self, max_num_trace_levels )
+  subroutine report( self )
     use exception_handling_string_utils, only : indent, truncate_width
     !> exception
     class(Exception), intent(in) :: self
-    !> maximum number of levels in trace to report   
-    !> default: `0` (full trace)
-    integer, optional, intent(in) :: max_num_trace_levels
   
     character(len=*), parameter :: PROCEDURE_NAME = 'report'
 
@@ -128,19 +123,21 @@ contains
     integer, allocatable :: units(:)
     character(len=64) :: codestring
     character(len=:), allocatable :: string
+    type(ExceptionOutputConfiguration) :: config
 
+    config = self%class%get_output_config()
     write( codestring, '(i64)' ) self%code
     string = &
       self%class%get_name() // ' [' // trim( adjustl( self%handler_name ) ) // ']' &
         // new_line(string) // &
       indent( 'trace:    ', 2 ) // &
-        adjustl( indent( truncate_width( trace_string( self%throw_trace, self%catch_trace, self%config%max_trace_lines ), &
-          self%config%max_width-2-10 ), 2+10 ) ) // new_line(string) // &
+        adjustl( indent( truncate_width( trace_string( self%throw_trace, self%catch_trace, config%max_trace_lines ), &
+          config%max_width-2-10 ), 2+10 ) ) // new_line(string) // &
       indent( 'code:     ', 2 ) // &
         trim( adjustl( codestring ) ) &
         // new_line(string) // &
       indent( 'message:  ', 2 ) // &
-        adjustl( indent( truncate_width( trim( adjustl( self%message ) ), self%config%max_width-2-10 ), 2+10 ) ) &
+        adjustl( indent( truncate_width( trim( adjustl( self%message ) ), config%max_width-2-10 ), 2+10 ) ) &
         // new_line(string) 
 
     units = self%class%get_report_units()
@@ -199,7 +196,11 @@ contains
         nstart = 1 + (max_num_lines - 3) / 2
         nend = max_num_lines - 1 - nstart
       end if
-      string = 'lv. 1 ┬ ' // trim( athrow(1) )
+      if (nthrow == 1) then
+        string = 'lv. 1 ' // trim( athrow(1) )
+      else
+        string = 'lv. 1 ┬ ' // trim( athrow(1) )
+      end if
       do i = 2, nstart
         write( level, '(i5,x)' ) i
         string = string // new_line(string) // level // repeat( ' ', i-2 ) // '└┬ ' // trim( athrow(i) )
@@ -212,7 +213,7 @@ contains
         string = string // new_line(string) // level // repeat( ' ', i-2 ) // '└┬ ' // trim( athrow(i) )
       end do
       write( level, '(i5,x)' ) nthrow
-      string = string // new_line(string) // level // repeat( ' ', nthrow-2 ) // '└─ ' // trim( athrow(nthrow) )
+      if (nthrow > 1) string = string // new_line(string) // level // repeat( ' ', nthrow-2 ) // '└─ ' // trim( athrow(nthrow) )
     end select
 
     ! add catch info
@@ -221,9 +222,10 @@ contains
       write( level, '(i6)' ) ncatch
       string = string // 'caught on level ' // trim( adjustl( level ) ) // ' in "' // trim( acatch(ncatch) ) // '"'
     end if
-    if (ncommon < ncatch) then
+    if (ncommon > 0 .and. ncommon < ncatch) then
       write( level, '(i6)' ) ncommon
-      string = string // ' on a branch that left the above branch on level ' // trim( adjustl( level ) )
+      string = string // ' on a branch that left the branch above on level ' // trim( adjustl( level ) ) &
+        // ' in "' // trim( athrow(ncommon) ) // '"'
     end if
   end function trace_string
 

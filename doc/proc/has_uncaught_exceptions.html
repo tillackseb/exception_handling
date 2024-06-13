@@ -91,7 +91,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 0.9% of total for procedures.">6 statements</a>
+               title=" 2.2% of total for procedures.">14 statements</a>
           </li>
 
             <li id="source-file">
@@ -145,7 +145,7 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private pure function has_uncaught_exceptions(self) result(l)  
+    <h2>private pure function has_uncaught_exceptions(self, class) result(l)  
 </h2>
     
 
@@ -178,6 +178,21 @@
             <td><strong>self</strong></td>
             <td>
                 <p>exception handler</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-class"></span>
+              type(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>class</strong></td>
+            <td>
+                <p>if present, only exceptions of this class are considered</p>
             </td>
         </tr>
     </tbody>

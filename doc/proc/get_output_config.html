@@ -8,7 +8,7 @@
     <meta name="author" content="Sebastian Tillack" >
     <link rel="icon" href="../favicon.png">
 
-    <title>example_recursive &ndash; exception-handling</title>
+    <title>get_output_config &ndash; exception-handling</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -79,8 +79,8 @@
 
     <div class="container">
   <div class="row">
-    <h1>example_recursive
-      <small>Subroutine</small>
+    <h1>get_output_config
+      <small>Function</small>
       
     </h1>
       <div class="row" id="info-bar">
@@ -91,18 +91,18 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 2.5% of total for procedures.">16 statements</a>
+               title=" 0.9% of total for procedures.">6 statements</a>
           </li>
 
             <li id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/example.f90"> Source File</a>
+              <a href="../src/class.f90"> Source File</a>
             </li>
         </ul>
         <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/example.f90.html'>example.f90</a></li>
-              <li><a href='../module/example.html'>example</a></li>
-          <li class="active">example_recursive</li>
+              <li><a href='../sourcefile/class.f90.html'>class.f90</a></li>
+              <li><a href='../module/exception_handling_exception_class.html'>exception_handling_exception_class</a></li>
+          <li class="active">get_output_config</li>
         </ol>
       </div>
     </div>
@@ -139,23 +139,57 @@
   
   
 
-    <em>None</em>
 
   </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>public  subroutine example_recursive()  
+    <h2>private pure function get_output_config(self) result(config)  
 </h2>
     
 
-    <p>description</p>
+    <p>Get output configuration.</p>
 
+    <h3>Type Bound</h3>
+    <p><a href='../type/exceptionclass.html'>ExceptionClass</a></p>
 
     <h3>Arguments</h3>
-    <em>None</em>
-    <br>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-self~23"></span>
+              class(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>self</strong></td>
+            <td>
+                <p>exception class</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-config~2"></span>
+          type(<a href='../type/exceptionoutputconfiguration.html'>ExceptionOutputConfiguration</a>)
+        </small>
+      </h3>
+      <p>output configuration</p>
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
@@ -180,7 +214,6 @@
   
   
 
-    <em>None</em>
 
     </section>
     <br class="visible-xs visible-sm hidden-md">

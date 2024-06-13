@@ -9,6 +9,7 @@ module exception_handling_configuration
   ! general
   integer, public, parameter :: DEFAULT_ERROR_UNIT = error_unit ! default unit for error roport
   integer, public, parameter :: DEFAULT_WARNING_UNIT = output_unit ! default unit for warning report
+  integer, public, parameter :: SELF_EXCEPTION_CODE = 999 ! code of exceptions thrown by exception handling lib itself
   
   ! ProcedureTrace
   integer, public, parameter :: TRACE_MAX_LENGTH = 2048 ! maximum length trace list string

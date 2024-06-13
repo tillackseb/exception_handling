@@ -91,7 +91,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 3.1% of total for procedures.">20 statements</a>
+               title=" 2.7% of total for procedures.">17 statements</a>
           </li>
 
             <li id="source-file">
@@ -145,11 +145,11 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private pure subroutine add_report_units(self, class, units, add_class)  
+    <h2>private pure subroutine add_report_units(self, units, class)  
 </h2>
     
 
-    <p>Add report units to given exception class.</p>
+    <p>Add report units to all exception classes.</p>
 
     <h3>Type Bound</h3>
     <p><a href='../type/exceptionhandler.html'>ExceptionHandler</a></p>
@@ -167,7 +167,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-self~9"></span>
+              <span class="anchor" id="variable-self~12"></span>
               class(<a href='../type/exceptionhandler.html'>ExceptionHandler</a>),
             </td>
 <td>intent(inout)</td>
@@ -178,21 +178,6 @@
             <td><strong>self</strong></td>
             <td>
                 <p>exception handler</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-class~3"></span>
-              type(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>class</strong></td>
-            <td>
-                <p>exception class to which to add report units</p>
             </td>
         </tr>
         <tr>
@@ -212,18 +197,17 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-add_class~2"></span>
-              logical,
+              <span class="anchor" id="variable-class~9"></span>
+              type(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
             </td>
 <td>intent(in),</td>
               <td>optional</td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>add_class</strong></td>
+            <td><strong>class</strong></td>
             <td>
-                <p>add class if not yet in exception handler <br>
-default: True</p>
+                <p>if present, units will be added to this class only</p>
             </td>
         </tr>
     </tbody>

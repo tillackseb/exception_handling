@@ -91,7 +91,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 1.6% of total for procedures.">10 statements</a>
+               title=" 4.4% of total for procedures.">28 statements</a>
           </li>
 
             <li id="source-file">
@@ -145,7 +145,7 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>private pure subroutine catch(self, e, trace)  
+    <h2>private pure subroutine catch(self, e, class)  
 </h2>
     
 
@@ -192,23 +192,23 @@
             <td>::</td>
             <td><strong>e</strong></td>
             <td>
-                <p>cought exception</p>
+                <p>cought exception
+(<a href="../module/exception_handling_exception.html#variable-no_exception">NO_EXCEPTION</a> if handler has no exceptions)</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-trace~2"></span>
-              type(<a href='../type/proceduretrace.html'>ProcedureTrace</a>),
+              <span class="anchor" id="variable-class~4"></span>
+              type(<a href='../type/exceptionclass.html'>ExceptionClass</a>),
             </td>
 <td>intent(in),</td>
               <td>optional</td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>trace</strong></td>
+            <td><strong>class</strong></td>
             <td>
-                <p>trace leading to place exception is cought<br>
-default: empty trace</p>
+                <p>if present, first exception of this class will be caught</p>
             </td>
         </tr>
     </tbody>

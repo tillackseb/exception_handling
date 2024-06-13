@@ -91,7 +91,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="13.0% of total for modules and submodules.">104 statements</a>
+               title="14.0% of total for modules and submodules.">110 statements</a>
           </li>
 
             <li id="source-file">
@@ -127,7 +127,9 @@
       </div>
       <div id="vars-0" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../module/exception_handling_trace.html#variable-module_name~7">MODULE_NAME</a>
+            <a class="list-group-item" href="../module/exception_handling_trace.html#variable-module_name~5">MODULE_NAME</a>
+            <a class="list-group-item" href="../module/exception_handling_trace.html#variable-empty_trace">EMPTY_TRACE</a>
+            <a class="list-group-item" href="../module/exception_handling_trace.html#variable-unknown_trace">UNKNOWN_TRACE</a>
         </div>
       </div>
     </div>
@@ -234,7 +236,9 @@
       </div>
       <div id="vars-1" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../module/exception_handling_trace.html#variable-module_name~7">MODULE_NAME</a>
+            <a class="list-group-item" href="../module/exception_handling_trace.html#variable-module_name~5">MODULE_NAME</a>
+            <a class="list-group-item" href="../module/exception_handling_trace.html#variable-empty_trace">EMPTY_TRACE</a>
+            <a class="list-group-item" href="../module/exception_handling_trace.html#variable-unknown_trace">UNKNOWN_TRACE</a>
         </div>
       </div>
     </div>
@@ -326,7 +330,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-module_name~7"></span>
+              <span class="anchor" id="variable-module_name~5"></span>
               character(len=*),
             </td>
               <td>private,</td>
@@ -339,6 +343,40 @@ parameter
                 <td>'exception_handling_trace'</td>
             <td>
                 
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-empty_trace"></span>
+              type(<a href='../type/proceduretrace.html'>ProcedureTrace</a>),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>EMPTY_TRACE</strong></td>
+<td> =</td>
+                <td>ProcedureTrace(trace=repeat(TRACE_SPECIAL, TRACE_MAX_LENGTH))</td>
+            <td>
+                <p>constant empty procedure trace</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-unknown_trace"></span>
+              type(<a href='../type/proceduretrace.html'>ProcedureTrace</a>),
+            </td>
+              <td>public,</td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>UNKNOWN_TRACE</strong></td>
+<td> =</td>
+                <td>ProcedureTrace(trace=TRACE_UNKNOWN)</td>
+            <td>
+                <p>constant unknown procedure trace</p>
             </td>
         </tr>
     </tbody>
@@ -362,7 +400,7 @@ parameter
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
-    private pure function <a href='../proc/new_procedure_trace.html'>new_procedure_trace</a>(trace) result(self)  
+    private pure function <a href='../proc/new_procedure_trace.html'>new_procedure_trace</a>(trace, delimiter) result(self)  
 
     </h3>
     
@@ -384,15 +422,29 @@ parameter
               <span class="anchor" ></span>
               character(len=*),
             </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
+<td>intent(in)</td>
+              <td></td>            <td>
               
             </td>
             <td>::</td>
             <td><strong>trace</strong></td>
             <td>
-<p>comma separated list of levels of trace <br>
-default : empty string</p>
+<p>comma separated list of levels of trace   </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=1),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>delimiter</strong></td>
+            <td>
+<p>delimiter (only used to parse initialization string)   </p>
             </td>
         </tr>
     </tbody>
@@ -439,7 +491,7 @@ default : empty string</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-trace~9"></span>
+              <span class="anchor" id="variable-trace~5"></span>
               character(len=TRACE_MAX_LENGTH),
             </td>
               <td>private</td>
@@ -469,7 +521,7 @@ default : empty string</p>
                     pure
                     function
                     <strong><a href='../proc/new_procedure_trace.html'>new_procedure_trace</a></strong>
-                    (trace)
+                    (trace, delimiter)
                   </td>
                   <td><p>Procedure trace constructor.</p></td>
                 </tr>
@@ -515,7 +567,7 @@ default : empty string</p>
         <section>
           <h2>Functions</h2>
               <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-new_procedure_trace"></span><h3>private pure function <a href='../proc/new_procedure_trace.html'>new_procedure_trace</a>(trace) result(self)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-new_procedure_trace"></span><h3>private pure function <a href='../proc/new_procedure_trace.html'>new_procedure_trace</a>(trace, delimiter) result(self)  
 </h3></div>
     <div class="panel-body">
           
@@ -537,15 +589,29 @@ default : empty string</p>
               <span class="anchor" ></span>
               character(len=*),
             </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
+<td>intent(in)</td>
+              <td></td>            <td>
               
             </td>
             <td>::</td>
             <td><strong>trace</strong></td>
             <td>
-<p>comma separated list of levels of trace <br>
-default : empty string</p>
+<p>comma separated list of levels of trace   </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=1),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>delimiter</strong></td>
+            <td>
+<p>delimiter (only used to parse initialization string)   </p>
             </td>
         </tr>
     </tbody>
