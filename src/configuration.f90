@@ -44,6 +44,11 @@ module exception_handling_configuration
     integer :: max_trace_lines = -1
   end type ExceptionOutputConfiguration
 
+  ! module ExceptionOutputConfiguration type constants
+  !> constant edefault output configuration
+  type(ExceptionOutputConfiguration), public, parameter :: DEFAULT_OUTPUT_CONFIG &
+    = ExceptionOutputConfiguration( max_width=-1, max_trace_lines=-1 )
+
   public :: ExceptionOutputConfiguration
 
 contains

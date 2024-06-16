@@ -20,7 +20,7 @@ module exception_handling_exception_class
     !> units to which report exceptions of this class
     integer :: report_units(CLASS_MAX_NUM_UNITS) = CLASS_INVALID_UNIT
     !> output configuration
-    type(ExceptionOutputConfiguration) :: output_config
+    type(ExceptionOutputConfiguration) :: output_config = DEFAULT_OUTPUT_CONFIG
   contains
     !> get exception class name
     procedure :: get_name

@@ -10,7 +10,7 @@ module exception_handling_exception_handler
   use exception_handling_configuration
   use exception_handling_exception_class, only : ExceptionClass, ERROR_CLASS, WARNING_CLASS
   use exception_handling_exception, only : Exception, NO_EXCEPTION
-  use exception_handling_trace, only : ProcedureTrace, UNKNOWN_TRACE
+  use exception_handling_trace, only : ProcedureTrace, EMPTY_TRACE, UNKNOWN_TRACE
   implicit none
   private
 
@@ -28,13 +28,13 @@ module exception_handling_exception_handler
     !> stack of uncaught exceptions
     type(Exception), allocatable :: exceptions(:)
     !> trace to current state of exception handler
-    type(ProcedureTrace) :: trace
+    type(ProcedureTrace) :: trace = EMPTY_TRACE
     !> index of thread in (shared memory) threaded environment
     integer :: thread = -1
     !> index of rank in (distributed memory) parallel environment
     integer :: rank = -1
     !> output configuration
-    type(ExceptionOutputConfiguration) :: output_config
+    type(ExceptionOutputConfiguration) :: output_config = DEFAULT_OUTPUT_CONFIG
   contains
     !> throw exception
     procedure :: throw
@@ -75,14 +75,17 @@ module exception_handling_exception_handler
     module procedure :: new_exception_handler
   end interface ExceptionHandler
 
+  type(ExceptionHandler), public, parameter :: DEFAULT_HANDLER &
+    = ExceptionHandler( name='default handler' )
+
   public :: Exception, ExceptionClass, ExceptionHandler
 
 contains
 
   !> Exception handler constructor.
-  pure function new_exception_handler( name, thread, rank, max_width, max_trace_lines, default_units ) result( self )
+  pure function new_exception_handler( handler_name, thread, rank, max_width, max_trace_lines, default_units ) result( self )
     !> custom name for exception handler
-    character(len=*), intent(in) :: name
+    character(len=*), intent(in) :: handler_name
     !> index of thread in (shared memory) threaded environment   
     !> default: -1 (no thread information)
     integer, optional, intent(in) :: thread
@@ -111,7 +114,7 @@ contains
     if (present(default_units)) defun = default_units
 
     ! assign values
-    self%name = name
+    self%name = handler_name
     if (present(thread)) self%thread = thread
     if (present(rank)) self%rank = rank
     if (present(max_width)) self%output_config%max_width = max_width
@@ -126,8 +129,6 @@ contains
     end if
     ! initialize exception stack
     call append_entries( self%exceptions )
-    ! initialize trace
-    self%trace = ProcedureTrace()
   end function new_exception_handler
 
   !> Throw an exception, i.e., add new exception to stack of uncaught exceptions.
