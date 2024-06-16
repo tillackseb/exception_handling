@@ -46,16 +46,16 @@ module exception_handling_exception
   ! module Exception type constants
   !> no exception
   type(Exception), public, parameter :: NO_EXCEPTION &
-    = Exception( NO_EXCEPTION_CLASS, code=0, message='', throw_trace=EMPTY_TRACE, catch_trace=EMPTY_TRACE )
+    = Exception( class=NO_EXCEPTION_CLASS, code=0, message='', throw_trace=EMPTY_TRACE, catch_trace=EMPTY_TRACE )
 
   public :: Exception
 
 contains
 
   !> Exception constructor.
-  pure function new_exception( class, code, message, config ) result( self )
+  pure function new_exception( exception_class, code, message, config ) result( self )
     !> exception class  
-    type(ExceptionClass), intent(in) :: class
+    type(ExceptionClass), intent(in) :: exception_class
     !> custom integer code  
     !> default: [[exception_handling_configuration(module):EXCEPTION_DEFAULT_CODE]]
     integer, optional, intent(in) :: code
@@ -69,7 +69,7 @@ contains
   
     character(len=*), parameter :: PROCEDURE_NAME = 'new_exception'
 
-    self%class = class
+    self%class = exception_class
 
     self%message = EXCEPTION_DEFAULT_MESSAGE
     if (present(message)) self%message = trim( adjustl( message ) )

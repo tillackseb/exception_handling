@@ -20,7 +20,7 @@ module exception_handling_exception_handler
   type :: ExceptionHandler
     private
     !> name of handler
-    character(len=HANDLER_NAME_MAX_LENGTH) :: name = HANDLER_NAME_DEFAULT
+    character(len=HANDLER_NAME_MAX_LENGTH), public :: name = HANDLER_NAME_DEFAULT
     !> exception classes this handler can handle
     type(ExceptionClass), allocatable :: classes(:)
     !> number of exceptions in exception stack
@@ -74,9 +74,6 @@ module exception_handling_exception_handler
   interface ExceptionHandler
     module procedure :: new_exception_handler
   end interface ExceptionHandler
-
-  type(ExceptionHandler), public, parameter :: DEFAULT_HANDLER &
-    = ExceptionHandler( name='default handler' )
 
   public :: Exception, ExceptionClass, ExceptionHandler
 

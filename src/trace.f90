@@ -39,9 +39,9 @@ module exception_handling_trace
 contains
 
   !> Procedure trace constructor.
-  pure function new_procedure_trace( trace, delimiter ) result( self )
+  pure function new_procedure_trace( trace_string, delimiter ) result( self )
     !> comma separated list of levels of trace   
-    character(len=*), intent(in) :: trace
+    character(len=*), intent(in) :: trace_string
     !> delimiter (only used to parse initialization string)   
     character, intent(in) :: delimiter
     !> procedure trace
@@ -52,27 +52,27 @@ contains
     integer :: i, j, n
     character(len=TRACE_MAX_LENGTH) :: add
 
-    if (trim( adjustl( trace ) ) == '') then
+    if (trim( adjustl( trace_string ) ) == '') then
       self = EMPTY_TRACE
       return
     end if
 
-    n = len( trace )
+    n = len( trace_string )
     i = 1; j = 1
     do while (i > 0 .and. j <= n)
-      i = index( trace(j:), delimiter )
+      i = index( trace_string(j:), delimiter )
       if (i == 0) then
-        add = trim( adjustl( trace(j:n) ) )
+        add = trim( adjustl( trace_string(j:n) ) )
       else if (i == 1) then
         add = TRACE_UNKNOWN
       else
-        add = trim( adjustl( trace(j:j+i-2) ) )
+        add = trim( adjustl( trace_string(j:j+i-2) ) )
       end if
       if (add == '') add = TRACE_UNKNOWN
       call self%add( add )
       j = j + i
     end do
-    if (trace(n:n) == delimiter) call self%add( TRACE_UNKNOWN )
+    if (trace_string(n:n) == delimiter) call self%add( TRACE_UNKNOWN )
   end function new_procedure_trace
 
   !> Add level to trace.
