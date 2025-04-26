@@ -21,14 +21,18 @@ module exception_handling_exception
     type(ExceptionClass), public :: class = ERROR_CLASS
     !> custom integer code
     integer, public :: code = EXCEPTION_DEFAULT_CODE
+    !> name of file in which exception was thrown
+    character(len=EXCEPTION_FILENAME_MAX_LENGTH), public :: filename = EXCEPTION_FILENAME_DEFAULT 
+    !> line number at which expcetion was thrown
+    integer, public :: line = -1
     !> exception message
-    character(len=EXCEPTION_MESSAGE_MAX_LENGTH), public :: message = ''
+    character(len=EXCEPTION_MESSAGE_MAX_LENGTH), public :: message = EXCEPTION_MESSAGE_DEFAULT
     !> trace leading to place exception was thrown
     type(ProcedureTrace) :: throw_trace = EMPTY_TRACE
     !> trace leading to place exception was caught
     type(ProcedureTrace) :: catch_trace = EMPTY_TRACE
     !> name of originating exception handler
-    character(len=HANDLER_NAME_MAX_LENGTH) :: handler_name = ''
+    character(len=HANDLER_NAME_MAX_LENGTH) :: handler_name = HANDLER_NAME_DEFAULT
   contains
     !> tell where exception is thrown
     procedure :: throw
@@ -46,21 +50,27 @@ module exception_handling_exception
   ! module Exception type constants
   !> no exception
   type(Exception), public, parameter :: NO_EXCEPTION &
-    = Exception( class=NO_EXCEPTION_CLASS, code=0, message='', throw_trace=EMPTY_TRACE, catch_trace=EMPTY_TRACE )
+    = Exception( class=NO_EXCEPTION_CLASS, code=0, filename='', line=0, message='', throw_trace=EMPTY_TRACE, catch_trace=EMPTY_TRACE )
 
   public :: Exception
 
 contains
 
   !> Exception constructor.
-  pure function new_exception( exception_class, code, message, config ) result( self )
+  pure function new_exception( exception_class, code, filename, line, message, config ) result( self )
     !> exception class  
     type(ExceptionClass), intent(in) :: exception_class
     !> custom integer code  
     !> default: [[exception_handling_configuration(module):EXCEPTION_DEFAULT_CODE]]
     integer, optional, intent(in) :: code
+    !> name of file in which exception was thrown   
+    !> default: [[exception_handling_configuration(module):EXCEPTION_FILENAME_DEFAULT]]
+    character(len=*), optional, intent(in) :: filename
+    !> line number at which expcetion was thrown   
+    !> default: `-1` (unspecified)
+    integer, optional, intent(in) :: line
     !> exception message  
-    !> default: [[exception_handling_configuration(module):EXCEPTION_DEFAULT_MESSAGE]]
+    !> default: [[exception_handling_configuration(module):EXCEPTION_MESSAGE_DEFAULT]]
     character(len=*), optional, intent(in) :: message
     !> output configuration
     type(ExceptionOutputConfiguration), optional, intent(in) :: config
@@ -71,9 +81,12 @@ contains
 
     self%class = exception_class
 
-    self%message = EXCEPTION_DEFAULT_MESSAGE
+    self%message = EXCEPTION_MESSAGE_DEFAULT
     if (present(message)) self%message = trim( adjustl( message ) )
+    self%filename = EXCEPTION_FILENAME_DEFAULT
+    if (present(filename)) self%filename = trim( adjustl( filename ) )
     if (present(code)) self%code = code
+    if (present(line)) self%line = line
 
     self%throw_trace = UNKNOWN_TRACE
     self%catch_trace = UNKNOWN_TRACE
@@ -121,12 +134,14 @@ contains
 
     integer :: i
     integer, allocatable :: units(:)
-    character(len=64) :: codestring
+    character(len=64) :: codestring, linestring
     character(len=:), allocatable :: string
     type(ExceptionOutputConfiguration) :: config
 
     config = self%class%get_output_config()
     write( codestring, '(i64)' ) self%code
+    linestring = EXCEPTION_LINESTRING_DEFAULT
+    if (self%line > 0) write( linestring, '(i64)' ) self%line
     string = &
       self%class%get_name() // ' [' // trim( adjustl( self%handler_name ) ) // ']' &
         // new_line(string) // &
@@ -135,6 +150,12 @@ contains
           config%max_width-2-10 ), 2+10 ) ) // new_line(string) // &
       indent( 'code:     ', 2 ) // &
         trim( adjustl( codestring ) ) &
+        // new_line(string) // &
+      indent( 'file:     ', 2 ) // &
+        trim( adjustl( self%filename ) ) &
+        // new_line(string) // &
+      indent( 'line:     ', 2 ) // &
+        trim( adjustl( linestring ) ) &
         // new_line(string) // &
       indent( 'message:  ', 2 ) // &
         adjustl( indent( truncate_width( trim( adjustl( self%message ) ), config%max_width-2-10 ), 2+10 ) ) &

@@ -129,7 +129,7 @@ contains
   end function new_exception_handler
 
   !> Throw an exception, i.e., add new exception to stack of uncaught exceptions.
-  pure subroutine throw( self, class, code, message, info, add_class )
+  pure subroutine throw( self, class, code, filename, line, message, info, add_class )
     !> exception handler
     class(ExceptionHandler), intent(inout) :: self
     !> exception class
@@ -137,6 +137,12 @@ contains
     !> optional custom exception code   
     !> default: [[exception_handling_configuration(module):EXCEPTION_DEFAULT_CODE]]
     integer, optional, intent(in) :: code
+    !> name of file in which exception was thrown   
+    !> default: [[exception_handling_configuration(module):EXCEPTION_FILENAME_DEFAULT]]
+    character(len=*), optional, intent(in) :: filename
+    !> line number at which expcetion was thrown   
+    !> default: `-1` (unspecified)
+    integer, optional, intent(in) :: line
     !> custom message   
     !> default: [[exception_handling_configuration(module):EXCEPTION_DEFAULT_MESSAGE]]
     character(len=*), optional, intent(in) :: message
@@ -167,13 +173,14 @@ contains
     if (present(info)) string = string // new_line('a') // '(' // trim( adjustl( info ) ) // ')' 
     ! add exception
     self%exception_count = self%exception_count + 1
+    if (.not. allocated(self%exceptions)) call append_entries( self%exceptions )
     if (self%exception_count > size(self%exceptions)) call append_entries( self%exceptions )
     if (string /= '') then
       self%exceptions(self%exception_count) = &
-        Exception( self%classes(i), code=code, message=string, config=self%output_config )
+        Exception( self%classes(i), code=code, filename=filename, line=line, message=string, config=self%output_config )
     else
       self%exceptions(self%exception_count) = &
-        Exception( self%classes(i), code=code, config=self%output_config )
+        Exception( self%classes(i), code=code, filename=filename, line=line, config=self%output_config )
     end if
     call self%exceptions(self%exception_count)%throw( trim(self%name), trace=self%trace )
   end subroutine throw
